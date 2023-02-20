@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Src\Controller\Carts\CartsPutController;
+use App\Src\Controller\CartItems\CartItemsPutController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::put('/carts/{cartId}', CartsPutController::class);
+
+Route::put('/carts/{cartId}/items/{itemId}', CartItemsPutController::class);
