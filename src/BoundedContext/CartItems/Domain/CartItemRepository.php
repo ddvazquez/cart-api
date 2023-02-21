@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Spfc\BoundedContext\CartItems\Domain;
 
+use Spfc\BoundedContext\Carts\Domain\Cart;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
+
 interface CartItemRepository
 {
     /**
@@ -11,6 +14,18 @@ interface CartItemRepository
      * @return void
      */
     public function save(CartItem $cartItem): void;
+
+    /**
+     * @param CartItemId $id
+     * @return void
+     */
+    public function delete(CartItemId $id): void;
+
+    /**
+     * @param CartItemId $id
+     * @return CartItem|null
+     */
+    public function search(CartItemId $id): ?CartItem;
 
     /**
      * @param  string  $id

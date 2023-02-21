@@ -19,7 +19,7 @@ final class CartPayer
      * @param CartRepository $repository
      * @param EventBus $bus
      */
-    public function __construct(CartRepository $repository, EventBus $bus)
+    public function __construct(CartRepository $repository)
     {
         $this->repository = $repository;
         $this->finder     = new CartFinder($repository);
@@ -37,6 +37,5 @@ final class CartPayer
         $cart->pay();
 
         $this->repository->save($cart);
-        $this->bus->publish(...$cart->pullDomainEvents());
     }
 }

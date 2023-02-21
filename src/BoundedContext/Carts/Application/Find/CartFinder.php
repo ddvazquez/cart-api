@@ -5,7 +5,7 @@ namespace Spfc\BoundedContext\Carts\Application\Find;
 use Spfc\BoundedContext\Carts\Domain\Cart;
 use Spfc\BoundedContext\Carts\Domain\CartNotExist;
 use Spfc\BoundedContext\Carts\Domain\CartRepository;
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 
 final class CartFinder
 {

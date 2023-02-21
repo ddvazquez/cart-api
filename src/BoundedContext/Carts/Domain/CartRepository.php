@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Spfc\BoundedContext\Carts\Domain;
 
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 
 interface CartRepository
 {

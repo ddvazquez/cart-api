@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Spfc\BoundedContext\CartItems\Domain;
 
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\ProductId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\ProductId;
 use Spfc\Shared\Domain\Aggregate\AggregateRoot;
 
 final class CartItem extends AggregateRoot

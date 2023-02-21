@@ -2,19 +2,19 @@
 
 declare(strict_types = 1);
 
-namespace Spfc\BoundedContext\Carts\Domain;
+namespace Spfc\BoundedContext\CartItems\Domain;
 
 use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 use Spfc\Shared\Domain\DomainError;
 
-final class CartNotExist extends DomainError
+final class CartItemNotExist extends DomainError
 {
-    private CartId $id;
+    private CartItemId $id;
 
     /**
-     * @param CartId $id
+     * @param CartItemId $id
      */
-    public function __construct(CartId $id)
+    public function __construct(CartItemId $id)
     {
         $this->id = $id;
 
@@ -26,7 +26,7 @@ final class CartNotExist extends DomainError
      */
     public function errorCode(): string
     {
-        return 'cart_not_exist';
+        return 'cart_item_not_exist';
     }
 
     /**
@@ -34,6 +34,6 @@ final class CartNotExist extends DomainError
      */
     protected function errorMessage(): string
     {
-        return sprintf('The cart <%s> does not exist', $this->id->value());
+        return sprintf('The cart item <%s> does not exist', $this->id->value());
     }
 }

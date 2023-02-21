@@ -6,7 +6,7 @@ namespace Spfc\Shared\Infrastructure\Providers;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Spfc\BoundedContext\Carts\Application\Update\UpdateTotalsOnCartItemCreated;
+use Spfc\BoundedContext\Carts\Application\Update\IncremetTotalsOnCartItemCreated;
 use Spfc\Shared\Domain\Bus\Event\EventBus;
 use Spfc\Shared\Infrastructure\Bus\Event\DomainEventMapping;
 use Spfc\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator;
@@ -16,7 +16,7 @@ use Spfc\Shared\Infrastructure\Bus\Event\MySql\MySqlEloquentEventBus;
 final class SharedServiceProvider extends ServiceProvider
 {
     public array $bindings = [
-        EventBus::class => MySqlEloquentEventBus::class, //InMemorySymfonyEventBus::class,
+        EventBus::class => InMemorySymfonyEventBus::class, //MySqlEloquentEventBus::class,
     ];
 
     /**
@@ -25,7 +25,7 @@ final class SharedServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->tag([
-            UpdateTotalsOnCartItemCreated::class,
+            IncremetTotalsOnCartItemCreated::class,
         ], 'domain_event_subscriber');
 
         $this->app->bind(InMemorySymfonyEventBus::class, function (Application $app) {

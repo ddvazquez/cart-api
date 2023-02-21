@@ -17,5 +17,9 @@ final class CartEloquentModel extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['payed', 'total_items', 'total', 'date'];
+    protected $fillable = ['id', 'payed', 'total_items', 'total', 'date'];
+
+    protected $casts = [
+        'payed'  => 'boolean'
+    ];
 }

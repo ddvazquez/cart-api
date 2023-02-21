@@ -18,5 +18,5 @@ final class CartItemEloquentModel extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['cart_id', 'product_id', 'name', 'description', 'price'];
+    protected $fillable = ['id', 'cart_id', 'product_id', 'name', 'description', 'price'];
 }

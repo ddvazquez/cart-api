@@ -36,11 +36,11 @@ class InMemorySymfonyEventBus implements EventBus
      * @param  DomainEvent  ...$events
      * @return void
      */
-    public function publish(DomainEvent ...$events): void
+    public function publish(DomainEvent ...$domainEvents): void
     {
-        foreach ($events as $event) {
+        foreach ($domainEvents as $domainEvent) {
             try {
-                $this->bus->dispatch($event);
+                $this->bus->dispatch($domainEvent);
             } catch (NoHandlerForMessageException $error) {
             }
         }

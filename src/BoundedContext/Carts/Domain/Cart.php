@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Spfc\BoundedContext\Carts\Domain;
 
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
+
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 use Spfc\Shared\Domain\Aggregate\AggregateRoot;
 
 final class Cart extends AggregateRoot
@@ -96,6 +97,24 @@ final class Cart extends AggregateRoot
     {
         $this->payed = new CartPayed(true);
 
-        $this->record(new CartPayedDomainEvent($this->id->value(), $this->payed->value(), $this->totalItems->value(), $this->total->value(), $this->date->value()));
+      //  $this->record(new CartPayedDomainEvent($this->id->value(), $this->payed->value(), $this->totalItems->value(), $this->total->value(), $this->date->value()));
+    }
+
+    /**
+     * @param float $price
+     * @return void
+     */
+    public function totalsIncrement(float $price) : void {
+        $this->totalItems = new CartTotalItems($this->totalItems->value()+1);
+        $this->total = new CartTotal($this->total->value() + $price);
+    }
+
+    /**
+     * @param float $price
+     * @return void
+     */
+    public function totalsDecrement(float $price) : void {
+        $this->totalItems = new CartTotalItems($this->totalItems->value()-1);
+        $this->total = new CartTotal($this->total->value() - $price);
     }
 }

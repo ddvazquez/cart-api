@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Spfc\BoundedContext\Carts\Infrastructure\Persistence;
 
 use Spfc\BoundedContext\Carts\Domain\Cart;
+use Spfc\BoundedContext\Carts\Domain\CartDate;
+use Spfc\BoundedContext\Carts\Domain\CartPayed;
 use Spfc\BoundedContext\Carts\Domain\CartRepository;
+use Spfc\BoundedContext\Carts\Domain\CartTotal;
+use Spfc\BoundedContext\Carts\Domain\CartTotalItems;
 use Spfc\BoundedContext\Carts\Infrastructure\Persistence\Eloquent\CartEloquentModel;
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 
 
 final class EloquentCartRepository implements CartRepository
@@ -18,14 +22,15 @@ final class EloquentCartRepository implements CartRepository
      */
     public function save(Cart $cart): void
     {
-        $model = new CartEloquentModel();
-        $model->id = $cart->id()->value();
-        $model->payed = $cart->payed()->value();
-        $model->total_items = $cart->totalItems()->value();
-        $model->total = $cart->total()->value();
-        $model->date = $cart->date()->value();
-
-        $model->save();
+        CartEloquentModel::updateOrCreate(
+            ['id' => $cart->id()->value()],
+            [
+                'payed' => $cart->payed()->value(),
+                'total_items' => $cart->totalItems()->value(),
+                'total' => $cart->total()->value(),
+                'date' => $cart->date()->value(),
+            ]
+        );
     }
 
     /**
@@ -40,7 +45,7 @@ final class EloquentCartRepository implements CartRepository
             return null;
         }
 
-        return $model;
+        return new Cart(new CartId($model->id), new CartPayed($model->payed),  new CartTotalItems($model->total_items), new CartTotal($model->total), new CartDate($model->date));
     }
 
     /**

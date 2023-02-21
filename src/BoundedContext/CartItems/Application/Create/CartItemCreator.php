@@ -10,24 +10,24 @@ use Spfc\BoundedContext\CartItems\Domain\CartItemId;
 use Spfc\BoundedContext\CartItems\Domain\CartItemName;
 use Spfc\BoundedContext\CartItems\Domain\CartItemPrice;
 use Spfc\BoundedContext\CartItems\Domain\CartItemRepository;
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\CartId;
-use Spfc\BoundedContext\Shared\Domain\ValueObjects\ProductId;
-use Spfc\Shared\Domain\Bus\Event\EventBus;
+use Spfc\BoundedContext\Carts\Application\Update\CartTotalsIncrementer;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
+use Spfc\BoundedContext\Shared\Domain\ValueObject\ProductId;
+use function Lambdish\Phunctional\apply;
 
 final class CartItemCreator
 {
     private CartItemRepository $repository;
-
-    private EventBus $bus;
+    private CartTotalsIncrementer $cartTotalsIncrementer;
 
     /**
-     * @param  CartItemRepository  $repository
-     * @param  EventBus  $bus
+     * @param CartItemRepository $repository
+     * @param CartTotalsIncrementer $cartTotalsIncrementer
      */
-    public function __construct(CartItemRepository $repository, EventBus $bus)
+    public function __construct(CartItemRepository $repository, CartTotalsIncrementer $cartTotalsIncrementer)
     {
         $this->repository = $repository;
-        $this->bus = $bus;
+        $this->cartTotalsIncrementer = $cartTotalsIncrementer;
     }
 
     /**
@@ -49,6 +49,6 @@ final class CartItemCreator
 
         $this->repository->save($cartItem);
 
-        $this->bus->publish(...$cartItem->pullDomainEvents());
+        apply($this->cartTotalsIncrementer, [$cartId, $request->price()]);
     }
 }

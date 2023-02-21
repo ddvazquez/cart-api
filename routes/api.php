@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Src\Controller\Carts\CartsPutController;
 use App\Src\Controller\CartItems\CartItemsPutController;
+use App\Src\Controller\CartItems\CartItemsDeleteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::put('/carts/{cartId}', CartsPutController::class);
 
 Route::put('/carts/{cartId}/items/{itemId}', CartItemsPutController::class);
+Route::delete('/carts/{cartId}/items/{itemId}', CartItemsDeleteController::class);
