@@ -31,7 +31,7 @@ class CartItemsDeleteController extends BaseController
             $this->deleter->__invoke($cartItemId);
 
             return new response('', Response::HTTP_OK);
-        } catch (\DomainException $ex) {
+        } catch (\DomainException|\InvalidArgumentException $ex) {
             return new response($ex->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }

@@ -13,17 +13,14 @@ final class CartPayer
 {
     private CartRepository $repository;
     private CartFinder $finder;
-    private EventBus $bus;
 
     /**
      * @param CartRepository $repository
-     * @param EventBus $bus
      */
     public function __construct(CartRepository $repository)
     {
         $this->repository = $repository;
         $this->finder     = new CartFinder($repository);
-        $this->bus        = $bus;
     }
 
     /**

@@ -10,6 +10,7 @@ use Spfc\BoundedContext\CartItems\Domain\CartItemId;
 use Spfc\BoundedContext\CartItems\Domain\CartItemName;
 use Spfc\BoundedContext\CartItems\Domain\CartItemPrice;
 use Spfc\BoundedContext\CartItems\Domain\CartItemRepository;
+use Spfc\BoundedContext\Carts\Application\Find\CartFinder;
 use Spfc\BoundedContext\Carts\Application\Update\CartTotalsIncrementer;
 use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
 use Spfc\BoundedContext\Shared\Domain\ValueObject\ProductId;
@@ -19,14 +20,17 @@ final class CartItemCreator
 {
     private CartItemRepository $repository;
     private CartTotalsIncrementer $cartTotalsIncrementer;
+    private CartFinder $cartFinder;
 
     /**
      * @param CartItemRepository $repository
+     * @param CartFinder $cartFinder
      * @param CartTotalsIncrementer $cartTotalsIncrementer
      */
-    public function __construct(CartItemRepository $repository, CartTotalsIncrementer $cartTotalsIncrementer)
+    public function __construct(CartItemRepository $repository, CartFinder $cartFinder, CartTotalsIncrementer $cartTotalsIncrementer)
     {
         $this->repository = $repository;
+        $this->cartFinder = $cartFinder;
         $this->cartTotalsIncrementer = $cartTotalsIncrementer;
     }
 
@@ -47,8 +51,16 @@ final class CartItemCreator
 
         $cartItem = CartItem::create($id, $cartId, $productId, $name, $description, $price, $isIdUnique);
 
+        $cart = $this->cartFinder->__invoke($cartId->value());
+
+        if($cart->payed()->value()) {
+            throw new \InvalidArgumentException(
+                sprintf('<%s> cart is already payed.', $cartId->value())
+            );
+        }
+
         $this->repository->save($cartItem);
 
-        apply($this->cartTotalsIncrementer, [$cartId, $request->price()]);
+        apply($this->cartTotalsIncrementer, [$request->cartId(), $request->price()]);
     }
 }

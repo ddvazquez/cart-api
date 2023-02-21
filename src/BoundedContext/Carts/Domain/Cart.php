@@ -51,6 +51,20 @@ final class Cart extends AggregateRoot
     }
 
     /**
+     * @return array
+     */
+    public function toPrimitives(): array
+    {
+        return [
+            'id'       => $this->id->value(),
+            'payed'     => $this->payed->value(),
+            'totalItems' => $this->totalItems->value(),
+            'total' => $this->total->value(),
+            'date' => $this->date->value(),
+        ];
+    }
+
+    /**
      * @return CartId
      */
     public function id(): CartId

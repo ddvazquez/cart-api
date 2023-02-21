@@ -36,7 +36,6 @@ class CartItemsPutController extends BaseController
                     $cartItemId,
                     $cartId,
                     $request
-
                 )
             );
 
