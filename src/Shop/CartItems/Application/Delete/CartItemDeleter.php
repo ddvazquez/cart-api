@@ -45,7 +45,7 @@ final class CartItemDeleter
 
         $cart = $this->cartFinder->__invoke($cartItem->cartId()->value());
 
-        if($cart->payed()->value()) {
+        if($cart->paid()->value()) {
             throw new \InvalidArgumentException(
                 sprintf('<%s> cart is already payed.', $cartItem->cartId()->value())
             );

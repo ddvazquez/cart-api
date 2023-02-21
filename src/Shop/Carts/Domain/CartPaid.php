@@ -6,6 +6,6 @@ namespace Spfc\Shop\Carts\Domain;
 
 use Spfc\Shared\Domain\ValueObject\BooleanValueObject;
 
-final class CartPayed extends BooleanValueObject
+final class CartPaid extends BooleanValueObject
 {
 }

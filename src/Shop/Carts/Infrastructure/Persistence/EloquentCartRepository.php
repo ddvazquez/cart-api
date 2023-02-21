@@ -6,7 +6,7 @@ namespace Spfc\Shop\Carts\Infrastructure\Persistence;
 
 use Spfc\Shop\Carts\Domain\Cart;
 use Spfc\Shop\Carts\Domain\CartDate;
-use Spfc\Shop\Carts\Domain\CartPayed;
+use Spfc\Shop\Carts\Domain\CartPaid;
 use Spfc\Shop\Carts\Domain\CartRepository;
 use Spfc\Shop\Carts\Domain\CartTotal;
 use Spfc\Shop\Carts\Domain\CartTotalItems;
@@ -25,7 +25,7 @@ final class EloquentCartRepository implements CartRepository
         CartEloquentModel::updateOrCreate(
             ['id' => $cart->id()->value()],
             [
-                'payed' => $cart->payed()->value(),
+                'paid' => $cart->paid()->value(),
                 'total_items' => $cart->totalItems()->value(),
                 'total' => $cart->total()->value(),
                 'date' => $cart->date()->value(),
@@ -45,7 +45,7 @@ final class EloquentCartRepository implements CartRepository
             return null;
         }
 
-        return new Cart(new CartId($model->id), new CartPayed($model->payed),  new CartTotalItems($model->total_items), new CartTotal($model->total), new CartDate($model->date));
+        return new Cart(new CartId($model->id), new CartPaid($model->paid),  new CartTotalItems($model->total_items), new CartTotal($model->total), new CartDate($model->date));
     }
 
     /**

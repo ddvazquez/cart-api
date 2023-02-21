@@ -53,7 +53,7 @@ final class CartItemCreator
 
         $cart = $this->cartFinder->__invoke($cartId->value());
 
-        if($cart->payed()->value()) {
+        if($cart->paid()->value()) {
             throw new \InvalidArgumentException(
                 sprintf('<%s> cart is already payed.', $cartId->value())
             );

@@ -10,22 +10,22 @@ use Spfc\Shared\Domain\Aggregate\AggregateRoot;
 final class Cart extends AggregateRoot
 {
     private CartId $id;
-    private CartPayed $payed;
+    private CartPaid $paid;
     private CartTotalItems $totalItems;
     private CartTotal $total;
     private CartDate $date;
 
     /**+
      * @param CartId $id
-     * @param CartPayed $payed
+     * @param CartPaid $paid
      * @param CartTotalItems $totalItems
      * @param CartTotal $total
      * @param CartDate $date
      */
-    public function __construct(CartId $id, CartPayed $payed, CartTotalItems $totalItems, CartTotal $total, CartDate $date)
+    public function __construct(CartId $id, CartPaid $paid, CartTotalItems $totalItems, CartTotal $total, CartDate $date)
     {
         $this->id = $id;
-        $this->payed = $payed;
+        $this->paid = $paid;
         $this->totalItems = $totalItems;
         $this->total = $total;
         $this->date = $date;
@@ -44,7 +44,7 @@ final class Cart extends AggregateRoot
             );
         }
 
-        $cart = new self($id, new CartPayed(false), new CartTotalItems(0), new CartTotal(0), new CartDate(date("Y-m-d H:i:s")));
+        $cart = new self($id, new CartPaid(false), new CartTotalItems(0), new CartTotal(0), new CartDate(date("Y-m-d H:i:s")));
 
         return $cart;
     }
@@ -56,7 +56,7 @@ final class Cart extends AggregateRoot
     {
         return [
             'id'       => $this->id->value(),
-            'payed'     => $this->payed->value(),
+            'paid'     => $this->paid->value(),
             'totalItems' => $this->totalItems->value(),
             'total' => $this->total->value(),
             'date' => $this->date->value(),
@@ -72,11 +72,11 @@ final class Cart extends AggregateRoot
     }
 
     /**
-     * @return CartPayed
+     * @return CartPaid
      */
-    public function payed(): CartPayed
+    public function paid(): CartPaid
     {
-        return $this->payed;
+        return $this->paid;
     }
 
     /**
@@ -108,7 +108,7 @@ final class Cart extends AggregateRoot
      */
     public function pay(): void
     {
-        $this->payed = new CartPayed(true);
+        $this->paid = new CartPaid(true);
     }
 
     /**

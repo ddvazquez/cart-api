@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->boolean('payed');
+            $table->boolean('paid');
             $table->integer('total_items');
             $table->float('total');
             $table->dateTime('date');
