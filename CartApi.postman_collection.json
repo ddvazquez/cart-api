@@ -15,7 +15,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/",
+							"raw": "cart-api.test/api/carts/:CartUuid",
 							"host": [
 								"cart-api",
 								"test"
@@ -23,7 +23,13 @@
 							"path": [
 								"api",
 								"carts",
-								""
+								":CartUuid"
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								}
 							]
 						}
 					},
@@ -35,7 +41,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/18038d32-e3b3-5434-b234-743476e43333",
+							"raw": "cart-api.test/api/carts/:CartUuid",
 							"host": [
 								"cart-api",
 								"test"
@@ -43,7 +49,13 @@
 							"path": [
 								"api",
 								"carts",
-								"18038d32-e3b3-5434-b234-743476e43333"
+								":CartUuid"
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								}
 							]
 						}
 					},
@@ -55,7 +67,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/",
+							"raw": "cart-api.test/api/carts/:CartUuid/pay",
 							"host": [
 								"cart-api",
 								"test"
@@ -63,7 +75,14 @@
 							"path": [
 								"api",
 								"carts",
-								""
+								":CartUuid",
+								"pay"
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								}
 							]
 						}
 					},
@@ -80,7 +99,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/18038d32-e3b3-5434-b234-743476e43333/items/18038d32-e3b3-5424-b234-343476e43332?productId=18038d32-e3b3-5424-b234-343476e43332&name=nombre&description=descripcion&price=1.22",
+							"raw": "cart-api.test/api/carts/:CartUuid/items/:CartItemUuid?productId=18038d32-e3b3-5424-b234-343476e43332&name=nombre&description=descripcion&price=1.22",
 							"host": [
 								"cart-api",
 								"test"
@@ -88,9 +107,9 @@
 							"path": [
 								"api",
 								"carts",
-								"18038d32-e3b3-5434-b234-743476e43333",
+								":CartUuid",
 								"items",
-								"18038d32-e3b3-5424-b234-343476e43332"
+								":CartItemUuid"
 							],
 							"query": [
 								{
@@ -109,6 +128,16 @@
 									"key": "price",
 									"value": "1.22"
 								}
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								},
+								{
+									"key": "CartItemUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43332"
+								}
 							]
 						}
 					},
@@ -120,7 +149,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/18038d32-e3b3-5424-b234-743476e43333/items",
+							"raw": "cart-api.test/api/carts/:CartUuid/items",
 							"host": [
 								"cart-api",
 								"test"
@@ -128,8 +157,14 @@
 							"path": [
 								"api",
 								"carts",
-								"18038d32-e3b3-5424-b234-743476e43333",
+								":CartUuid",
 								"items"
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								}
 							]
 						}
 					},
@@ -141,7 +176,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "cart-api.test/api/carts/18038d32-e3b3-5424-b234-743476e43333/items/12034d32-e3b3-5424-b232-733672e33333",
+							"raw": "cart-api.test/api/carts/:CartUuid/items/:CartItemUuid",
 							"host": [
 								"cart-api",
 								"test"
@@ -149,9 +184,19 @@
 							"path": [
 								"api",
 								"carts",
-								"18038d32-e3b3-5424-b234-743476e43333",
+								":CartUuid",
 								"items",
-								"12034d32-e3b3-5424-b232-733672e33333"
+								":CartItemUuid"
+							],
+							"variable": [
+								{
+									"key": "CartUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43333"
+								},
+								{
+									"key": "CartItemUuid",
+									"value": "18038d32-e3b3-5434-b234-743476e43332"
+								}
 							]
 						}
 					},
