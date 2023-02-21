@@ -22,4 +22,5 @@ Es un Laravel normal y corriente, pero por si acaso:
 
 ## Documentación
 
-- **[Api Documentation](https://spfc.stoplight.io/docs/spfc/bran
+- **[Api Documentation](https://spfc.stoplight.io/docs/spfc/branches/main/ts5nkbnl0616s-spfc)**
+- **[Colección Postman](CartApi.postman_collection.json)**
