@@ -8,7 +8,6 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Spfc\Shop\Carts\Application\Create\CartCreator;
 
-
 class CartsPutController extends BaseController
 {
     private CartCreator $creator;

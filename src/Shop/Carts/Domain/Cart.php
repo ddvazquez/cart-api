@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\Carts\Domain;
 
-
 use Spfc\Shop\Shared\Domain\ValueObject\CartId;
 use Spfc\Shared\Domain\Aggregate\AggregateRoot;
 

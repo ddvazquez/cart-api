@@ -11,7 +11,6 @@ use Spfc\Shop\CartItems\Domain\CartItemName;
 use Spfc\Shop\CartItems\Domain\CartItemPrice;
 use Spfc\Shop\CartItems\Domain\CartItemRepository;
 use Spfc\Shop\CartItems\Infrastructure\Persistence\Eloquent\CartItemEloquentModel;
-use Spfc\Shop\Carts\Domain\Cart;
 use Spfc\Shop\Shared\Domain\ValueObject\CartId;
 use Spfc\Shop\Shared\Domain\ValueObject\ProductId;
 
@@ -36,7 +35,7 @@ final class EloquentCartItemRepository implements CartItemRepository
     }
 
     /**
-     * @param CartItem $cartItem
+     * @param CartItemId $id
      * @return void
      */
     public function delete(CartItemId $id): void

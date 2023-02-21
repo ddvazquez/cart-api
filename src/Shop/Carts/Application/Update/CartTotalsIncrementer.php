@@ -15,10 +15,11 @@ final class CartTotalsIncrementer
 
     /**
      * @param CartRepository $repository
+     * @param CartFinder $cartFinder
      */
-    public function __construct(CartRepository $repository) {
+    public function __construct(CartRepository $repository, CartFinder $cartFinder) {
         $this->repository    = $repository;
-        $this->finder     = new CartFinder($repository);
+        $this->finder     = $cartFinder;
     }
 
     /**

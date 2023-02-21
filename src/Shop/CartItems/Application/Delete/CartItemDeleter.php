@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\CartItems\Application\Delete;
 
-
 use Spfc\Shop\CartItems\Domain\CartItemId;
 use Spfc\Shop\CartItems\Domain\CartItemNotExist;
 use Spfc\Shop\CartItems\Domain\CartItemRepository;

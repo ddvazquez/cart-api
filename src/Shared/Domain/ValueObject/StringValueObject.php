@@ -6,7 +6,7 @@ namespace Spfc\Shared\Domain\ValueObject;
 
 abstract class StringValueObject
 {
-    protected $value;
+    protected string $value;
 
     /**
      * @param  string  $value

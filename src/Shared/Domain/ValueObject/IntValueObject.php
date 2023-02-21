@@ -6,7 +6,7 @@ namespace Spfc\Shared\Domain\ValueObject;
 
 abstract class IntValueObject
 {
-    protected $value;
+    protected int $value;
 
     /**
      * @param  int  $value

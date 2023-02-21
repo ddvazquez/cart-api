@@ -9,7 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 use Spfc\Shop\CartItems\Application\Create\CartItemCreator;
 use Spfc\Shop\CartItems\Application\Create\CreateCartItemRequest;
 
-
 class CartItemsPutController extends BaseController
 {
     private CartItemCreator $creator;

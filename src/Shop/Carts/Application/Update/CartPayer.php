@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\Carts\Application\Update;
 
-
 use Spfc\Shop\Carts\Domain\CartRepository;
 use Spfc\Shop\Carts\Application\Find\CartFinder;
 
@@ -15,11 +14,12 @@ final class CartPayer
 
     /**
      * @param CartRepository $repository
+     * @param CartFinder $cartFinder
      */
-    public function __construct(CartRepository $repository)
+    public function __construct(CartRepository $repository, CartFinder $cartFinder)
     {
         $this->repository = $repository;
-        $this->finder     = new CartFinder($repository);
+        $this->finder     = $cartFinder;
     }
 
     /**
