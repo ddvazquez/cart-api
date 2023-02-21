@@ -66,6 +66,17 @@ final class EloquentCartItemRepository implements CartItemRepository
     }
 
     /**
+     * @param CartId $cartId
+     * @return array
+     */
+    public function searchByCartId(CartId $cartId) : array
+    {
+        $cartItems = CartItemEloquentModel::where('cart_id', $cartId->value())->get()->toArray();
+
+        return $cartItems;
+    }
+
+    /**
      * @param  string  $id
      * @return bool|null
      */

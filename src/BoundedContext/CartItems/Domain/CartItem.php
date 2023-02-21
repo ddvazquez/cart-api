@@ -55,8 +55,6 @@ final class CartItem extends AggregateRoot
 
         $cartItem = new self($id, $cartId, $productId, $name, $description, $price);
 
-        $cartItem->record(new CartItemCreatedDomainEvent($id->value(), $cartId->value(), $productId->value(), $name->value(), $description->value(), $price->value()));
-
         return $cartItem;
     }
 

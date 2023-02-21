@@ -7,8 +7,6 @@ namespace Spfc\BoundedContext\Carts\Application\Update;
 
 use Spfc\BoundedContext\Carts\Application\Find\CartFinder;
 use Spfc\BoundedContext\Carts\Domain\CartRepository;
-use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
-use Spfc\Shared\Domain\Bus\Event\EventBus;
 
 final class CartTotalsDecrementer
 {

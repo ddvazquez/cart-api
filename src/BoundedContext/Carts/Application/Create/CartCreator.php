@@ -7,22 +7,17 @@ namespace Spfc\BoundedContext\Carts\Application\Create;
 use Spfc\BoundedContext\Carts\Domain\Cart;
 use Spfc\BoundedContext\Carts\Domain\CartRepository;
 use Spfc\BoundedContext\Shared\Domain\ValueObject\CartId;
-use Spfc\Shared\Domain\Bus\Event\EventBus;
 
 final class CartCreator
 {
     private CartRepository $repository;
 
-    private EventBus $bus;
-
     /**
      * @param  CartRepository  $repository
-     * @param  EventBus  $bus
      */
-    public function __construct(CartRepository $repository, EventBus $bus)
+    public function __construct(CartRepository $repository)
     {
         $this->repository = $repository;
-        $this->bus = $bus;
     }
 
     /**

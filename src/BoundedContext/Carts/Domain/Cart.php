@@ -110,8 +110,6 @@ final class Cart extends AggregateRoot
     public function pay(): void
     {
         $this->payed = new CartPayed(true);
-
-      //  $this->record(new CartPayedDomainEvent($this->id->value(), $this->payed->value(), $this->totalItems->value(), $this->total->value(), $this->date->value()));
     }
 
     /**

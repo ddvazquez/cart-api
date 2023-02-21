@@ -7,6 +7,8 @@ use App\Src\Controller\Carts\CartsPutController;
 use App\Src\Controller\Carts\CartsPayPutController;
 use App\Src\Controller\CartItems\CartItemsPutController;
 use App\Src\Controller\CartItems\CartItemsDeleteController;
+use App\Src\Controller\CartItems\CartItemsGetController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,5 +28,6 @@ Route::get('/carts/{cartId}', CartsGetController::class);
 Route::put('/carts/{cartId}', CartsPutController::class);
 Route::put('/carts/{cartId}/pay', CartsPayPutController::class);
 
+Route::get('/carts/{cartId}/items', CartItemsGetController::class);
 Route::put('/carts/{cartId}/items/{itemId}', CartItemsPutController::class);
 Route::delete('/carts/{cartId}/items/{itemId}', CartItemsDeleteController::class);

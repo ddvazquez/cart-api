@@ -28,8 +28,16 @@ interface CartItemRepository
     public function search(CartItemId $id): ?CartItem;
 
     /**
+     * @param CartId $cartId
+     * @return array
+     */
+    public function searchByCartId(CartId $cartId) : array;
+
+    /**
      * @param  string  $id
      * @return bool|null
      */
     public function isIdUnique(string $id): ?bool;
+
+
 }
