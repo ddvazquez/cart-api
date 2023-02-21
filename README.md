@@ -18,7 +18,6 @@ Es un Laravel normal y corriente, pero por si acaso:
 - Ejecuta los siguientes comandos en la raíz del proyecto:
 - composer install
 - php artisan key:generate
-- php artisan migrate --seed
 
 ## Documentación
 
