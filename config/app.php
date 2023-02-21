@@ -195,8 +195,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Spfc\BoundedContext\Carts\Infrastructure\Providers\CartServiceProvider::class,
-        Spfc\BoundedContext\CartItems\Infrastructure\Providers\CartItemServiceProvider::class,
+        Spfc\Shop\Carts\Infrastructure\Providers\CartServiceProvider::class,
+        Spfc\Shop\CartItems\Infrastructure\Providers\CartItemServiceProvider::class,
     ],
 
     /*

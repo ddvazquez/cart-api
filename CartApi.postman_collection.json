@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "484f0a1e-65bd-4fa0-9789-974909091550",
+		"name": "CartApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1213232"
+	},
+	"item": [
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Cart Api - Create Cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart Api - Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/18038d32-e3b3-5434-b234-743476e43333",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								"18038d32-e3b3-5434-b234-743476e43333"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart Api - Pay Cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart Items",
+			"item": [
+				{
+					"name": "Cart Api - Create Cart Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/18038d32-e3b3-5434-b234-743476e43333/items/18038d32-e3b3-5424-b234-343476e43332?productId=18038d32-e3b3-5424-b234-343476e43332&name=nombre&description=descripcion&price=1.22",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								"18038d32-e3b3-5434-b234-743476e43333",
+								"items",
+								"18038d32-e3b3-5424-b234-343476e43332"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "18038d32-e3b3-5424-b234-343476e43332"
+								},
+								{
+									"key": "name",
+									"value": "nombre"
+								},
+								{
+									"key": "description",
+									"value": "descripcion"
+								},
+								{
+									"key": "price",
+									"value": "1.22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart Api - Get Cart Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/18038d32-e3b3-5424-b234-743476e43333/items",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								"18038d32-e3b3-5424-b234-743476e43333",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart Api - Delete Cart Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "cart-api.test/api/carts/18038d32-e3b3-5424-b234-743476e43333/items/12034d32-e3b3-5424-b232-733672e33333",
+							"host": [
+								"cart-api",
+								"test"
+							],
+							"path": [
+								"api",
+								"carts",
+								"18038d32-e3b3-5424-b234-743476e43333",
+								"items",
+								"12034d32-e3b3-5424-b232-733672e33333"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

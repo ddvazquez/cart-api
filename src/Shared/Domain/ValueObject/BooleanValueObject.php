@@ -28,7 +28,7 @@ abstract class BooleanValueObject
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return (string) $this->value();
     }

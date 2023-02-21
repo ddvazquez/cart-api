@@ -6,8 +6,8 @@ namespace App\Src\Controller\CartItems;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Spfc\BoundedContext\CartItems\Application\Create\CartItemCreator;
-use Spfc\BoundedContext\CartItems\Application\Create\CreateCartItemRequest;
+use Spfc\Shop\CartItems\Application\Create\CartItemCreator;
+use Spfc\Shop\CartItems\Application\Create\CreateCartItemRequest;
 
 
 class CartItemsPutController extends BaseController

@@ -5,8 +5,7 @@ namespace App\Src\Controller\CartItems;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Spfc\BoundedContext\CartItems\Application\Delete\CartItemDeleter;
-
+use Spfc\Shop\CartItems\Application\Delete\CartItemDeleter;
 
 class CartItemsDeleteController extends BaseController
 {

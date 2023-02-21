@@ -7,10 +7,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Spfc\BoundedContext\Carts\Application\CartResponse;
-use Spfc\BoundedContext\Carts\Application\Create\CartCreator;
-use Spfc\BoundedContext\Carts\Application\Find\CartFinder;
-use Spfc\BoundedContext\Carts\Application\Update\CartPayer;
+use Spfc\Shop\Carts\Application\CartResponse;
+use Spfc\Shop\Carts\Application\Create\CartCreator;
+use Spfc\Shop\Carts\Application\Find\CartFinder;
+use Spfc\Shop\Carts\Application\Update\CartPayer;
 use function Lambdish\Phunctional\map;
 
 

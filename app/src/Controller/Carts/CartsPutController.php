@@ -6,7 +6,7 @@ namespace App\Src\Controller\Carts;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Spfc\BoundedContext\Carts\Application\Create\CartCreator;
+use Spfc\Shop\Carts\Application\Create\CartCreator;
 
 
 class CartsPutController extends BaseController
