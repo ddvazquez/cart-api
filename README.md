@@ -26,4 +26,6 @@ Es un Laravel normal y corriente, pero por si acaso:
 
 ## In progresss
 
+- Implement Events and Synchronous Bus
 - Tests
+
