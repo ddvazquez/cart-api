@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\CartItems\Domain;
 
+use Spfc\BoundedContext\Users\Domain\UserCreatedDomainEvent;
 use Spfc\Shop\Shared\Domain\ValueObject\CartId;
 use Spfc\Shop\Shared\Domain\ValueObject\ProductId;
 use Spfc\Shared\Domain\Aggregate\AggregateRoot;
@@ -55,7 +56,17 @@ final class CartItem extends AggregateRoot
 
         $cartItem = new self($id, $cartId, $productId, $name, $description, $price);
 
+        $cartItem->record(new CartItemUpdatedDomainEvent($id->value(), $cartId->value(), $productId->value(), $name->value(), $description->value(), $price->__toString()));
+
         return $cartItem;
+    }
+
+    /**
+     * @return $this
+     */
+    public function delete(): void
+    {
+        $this->record(new CartItemUpdatedDomainEvent( $this->id->value(),  $this->cartId->value(),  $this->productId->value(),  $this->name->value(),  $this->description->value(),  $this->price->__toString()));
     }
 
     /**

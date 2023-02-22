@@ -128,4 +128,14 @@ final class Cart extends AggregateRoot
         $this->totalItems = new CartTotalItems($this->totalItems->value()-1);
         $this->total = new CartTotal($this->total->value() - $price);
     }
+
+    /**
+     * @param CartTotalItems $totalItems
+     * @param CartTotal $cartTotal
+     * @return void
+     */
+    public function totalsUpdater(CartTotalItems $totalItems, CartTotal $cartTotal) : void {
+        $this->totalItems =$totalItems;
+        $this->total = $cartTotal;
+    }
 }

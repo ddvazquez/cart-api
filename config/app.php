@@ -197,6 +197,7 @@ return [
 
         Spfc\Shop\Carts\Infrastructure\Providers\CartServiceProvider::class,
         Spfc\Shop\CartItems\Infrastructure\Providers\CartItemServiceProvider::class,
+        Spfc\Shared\Infrastructure\Providers\SharedServiceProvider::class,
     ],
 
     /*

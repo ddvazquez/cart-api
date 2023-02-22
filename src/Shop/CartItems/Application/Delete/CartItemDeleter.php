@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\CartItems\Application\Delete;
 
+use Spfc\Shared\Domain\Bus\Event\EventBus;
 use Spfc\Shop\CartItems\Domain\CartItemId;
 use Spfc\Shop\CartItems\Domain\CartItemNotExist;
 use Spfc\Shop\CartItems\Domain\CartItemRepository;
@@ -20,13 +21,13 @@ final class CartItemDeleter
     /**
      * @param CartItemRepository $repository
      * @param CartFinder $cartFinder
-     * @param CartTotalsDecrementer $cartTotalsDecrementer
+     * @param EventBus $bus
      */
-    public function __construct(CartItemRepository $repository, CartFinder $cartFinder, CartTotalsDecrementer $cartTotalsDecrementer)
+    public function __construct(CartItemRepository $repository, CartFinder $cartFinder, EventBus $bus)
     {
         $this->repository = $repository;
         $this->cartFinder = $cartFinder;
-        $this->cartTotalsDecrementer = $cartTotalsDecrementer;
+        $this->bus = $bus;
     }
 
     /**
@@ -50,9 +51,9 @@ final class CartItemDeleter
                 sprintf('<%s> cart is already payed.', $cartItem->cartId()->value())
             );
         }
-
+        $cartItem->delete();
         $this->repository->delete($id);
 
-        apply($this->cartTotalsDecrementer, [$cartItem->cartId()->value(), $cartItem->price()->value()]);
+        $this->bus->publish(...$cartItem->pullDomainEvents());
     }
 }

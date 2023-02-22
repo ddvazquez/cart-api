@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spfc\Shop\CartItems\Application\Create;
 
+use Spfc\Shared\Domain\Bus\Event\EventBus;
 use Spfc\Shop\CartItems\Domain\CartItem;
 use Spfc\Shop\CartItems\Domain\CartItemDescription;
 use Spfc\Shop\CartItems\Domain\CartItemId;
@@ -19,19 +20,19 @@ use function Lambdish\Phunctional\apply;
 final class CartItemCreator
 {
     private CartItemRepository $repository;
-    private CartTotalsIncrementer $cartTotalsIncrementer;
     private CartFinder $cartFinder;
+    private EventBus $bus;
 
     /**
      * @param CartItemRepository $repository
      * @param CartFinder $cartFinder
-     * @param CartTotalsIncrementer $cartTotalsIncrementer
+     * @param EventBus $bus
      */
-    public function __construct(CartItemRepository $repository, CartFinder $cartFinder, CartTotalsIncrementer $cartTotalsIncrementer)
+    public function __construct(CartItemRepository $repository, CartFinder $cartFinder, EventBus $bus)
     {
         $this->repository = $repository;
         $this->cartFinder = $cartFinder;
-        $this->cartTotalsIncrementer = $cartTotalsIncrementer;
+        $this->bus = $bus;
     }
 
     /**
@@ -61,6 +62,6 @@ final class CartItemCreator
 
         $this->repository->save($cartItem);
 
-        apply($this->cartTotalsIncrementer, [$request->cartId(), $request->price()]);
+        $this->bus->publish(...$cartItem->pullDomainEvents());
     }
 }
