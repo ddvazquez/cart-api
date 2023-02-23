@@ -40,9 +40,9 @@ abstract class UnitTestCase extends MockeryTestCase
     }
 
     /**
-     * @return MockInterface
+     * @return MockInterface|EventBus
      */
-    protected function eventBus(): MockInterface
+    protected function eventBus(): MockInterface | EventBus
     {
         return $this->eventBus = $this->eventBus ?: $this->mock(EventBus::class);
     }

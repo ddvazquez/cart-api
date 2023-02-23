@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Spfc\Tests\Shop\Carts\Domain;
+namespace Spfc\Tests\Shop\Shared\Domain;
 
 use Spfc\Shop\Shared\Domain\ValueObject\CartId;
 use Spfc\Tests\Shared\Domain\UuidMother;

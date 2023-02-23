@@ -9,10 +9,14 @@ use Faker\Generator;
 
 final class MotherCreator
 {
-    private static $faker;
 
+
+    /**
+     * @return Generator
+     */
     public static function random(): Generator
     {
-        return self::$faker = self::$faker ?: Factory::create();
+        static $faker;
+        return $faker ??= Factory::create();
     }
 }

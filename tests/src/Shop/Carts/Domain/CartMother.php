@@ -6,6 +6,7 @@ namespace Spfc\Tests\Shop\Carts\Domain;
 
 use Spfc\Shop\Carts\Domain\Cart;
 use Spfc\Shop\Shared\Domain\ValueObject\CartId;
+use Spfc\Tests\Shop\Shared\Domain\CartIdMother;
 
 final class CartMother
 {
