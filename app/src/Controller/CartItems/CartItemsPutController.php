@@ -6,6 +6,7 @@ namespace App\Src\Controller\CartItems;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
+use Spfc\Shared\Domain\DomainError;
 use Spfc\Shop\CartItems\Application\Create\CartItemCreator;
 use Spfc\Shop\CartItems\Application\Create\CreateCartItemRequest;
 
@@ -39,7 +40,7 @@ class CartItemsPutController extends BaseController
             );
 
             return new response('', Response::HTTP_CREATED);
-        } catch (\InvalidArgumentException $ex) {
+        } catch (\InvalidArgumentException|DomainError $ex) {
             return new response($ex->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }

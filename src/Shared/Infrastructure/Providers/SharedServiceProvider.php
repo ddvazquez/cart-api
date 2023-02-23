@@ -7,15 +7,18 @@ namespace Spfc\Shared\Infrastructure\Providers;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Spfc\Shared\Domain\Bus\Event\EventBus;
+use Spfc\Shared\Domain\UuidGenerator;
 use Spfc\Shared\Infrastructure\Bus\Event\DomainEventMapping;
 use Spfc\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator;
 use Spfc\Shared\Infrastructure\Bus\Event\InMemory\InMemorySymfonyEventBus;
+use Spfc\Shared\Infrastructure\LaravelUuidGenerator;
 use Spfc\Shop\Carts\Application\Update\UpdateCartTotalsOnCartItemsUpdated;
 
 final class SharedServiceProvider extends ServiceProvider
 {
     public array $bindings = [
         EventBus::class => InMemorySymfonyEventBus::class,
+        UuidGenerator::class => LaravelUuidGenerator::class,
     ];
 
     /**

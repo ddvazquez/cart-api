@@ -35,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Spfc\\Tests\\": ["tests/src"]
         }
     },
     "scripts": {
@@ -59,6 +59,9 @@
         "quality": [
             "@php ./vendor/bin/phpstan analyse --ansi src",
             "@php ./vendor/bin/psalm --show-info=true"
+        ],
+        "test": [
+            "@php -dxdebug.coverage_enable=1 -dxdebug.mode=coverage  vendor/bin/phpunit --coverage-html ./tests/report"
         ]
     },
     "extra": {
