@@ -19,6 +19,10 @@ abstract class CartItemsModuleUnitTestCase extends UnitTestCase
     private  $repository;
     private  $cartRepository;
 
+    /**
+     * @param CartItem $cart
+     * @return void
+     */
     protected function shouldSave(CartItem $cart): void
     {
         $this->repository()
@@ -28,6 +32,11 @@ abstract class CartItemsModuleUnitTestCase extends UnitTestCase
             ->andReturnNull();
     }
 
+    /**
+     * @param CartItemId $id
+     * @param CartItem|null $cart
+     * @return void
+     */
     protected function shouldSearch(CartItemId $id, ?CartItem $cart): void
     {
         $this->repository()
@@ -55,5 +64,29 @@ abstract class CartItemsModuleUnitTestCase extends UnitTestCase
     protected function repository(): MockInterface | CartItemRepository
     {
         return $this->repository = $this->repository ?: $this->mock(CartItemRepository::class);
+    }
+
+    /** CART */
+
+    /**
+     * @param CartId $id
+     * @param Cart|null $cart
+     * @return void
+     */
+    protected function cartShouldSearch(CartId $id, ?Cart $cart): void
+    {
+        $this->cartRepository()
+            ->shouldReceive('search')
+            ->with($this->similarTo($id))
+            ->once()
+            ->andReturn($cart);
+    }
+
+    /**
+     * @return MockInterface|CartRepository
+     */
+    protected function cartRepository(): MockInterface | CartRepository
+    {
+        return $this->cartRepository = $this->cartRepository ?: $this->mock(CartRepository::class);
     }
 }

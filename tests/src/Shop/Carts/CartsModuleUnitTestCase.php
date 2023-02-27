@@ -15,6 +15,10 @@ abstract class CartsModuleUnitTestCase extends UnitTestCase
 {
     private $repository;
 
+    /**
+     * @param Cart $cart
+     * @return void
+     */
     protected function shouldSave(Cart $cart): void
     {
         $this->repository()
@@ -24,6 +28,11 @@ abstract class CartsModuleUnitTestCase extends UnitTestCase
             ->andReturnNull();
     }
 
+    /**
+     * @param CartId $id
+     * @param Cart|null $cart
+     * @return void
+     */
     protected function shouldSearch(CartId $id, ?Cart $cart): void
     {
         $this->repository()
